@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import pickle
 import re
@@ -15,7 +16,7 @@ def clean_tweet(text):
 
 @st.cache_resource
 def load_model():
-    with open('sentiment_model.pkl', 'rb') as f:
+    with open(os.path.join(os.path.dirname(__file__), 'sentiment_model.pkl'), 'rb') as f:
         return pickle.load(f)
 
 model = load_model()
